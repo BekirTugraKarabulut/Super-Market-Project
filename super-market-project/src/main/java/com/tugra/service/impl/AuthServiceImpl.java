@@ -3,6 +3,9 @@ package com.tugra.service.impl;
 import com.tugra.dto.DtoKullanici;
 import com.tugra.dto.DtoKullaniciUI;
 import com.tugra.dto.RefreshTokenRequest;
+import com.tugra.exception.BaseException;
+import com.tugra.exception.ErrorMessage;
+import com.tugra.exception.MessageType;
 import com.tugra.jwt.AuthRequest;
 import com.tugra.jwt.AuthResponse;
 import com.tugra.jwt.JwtService;
@@ -55,11 +58,11 @@ public class AuthServiceImpl implements AuthService {
         kullanici.setRole(Role.KULLANICI);
 
         if(authRepository.findByUsername(kullanici.getUsername()).isPresent()){
-            return null;
+            throw new BaseException(new ErrorMessage(MessageType.KULLANICI_ADI_ALINMIS , kullanici.getUsername()));
         }
 
         if(authRepository.findByTelefonNo(kullanici.getTelefonNo()).isPresent()){
-            return null;
+            throw new BaseException(new ErrorMessage(MessageType.TELEFON_NO_ALINMIS , kullanici.getTelefonNo()));
         }
 
         Kullanici dbKullanici = authRepository.save(kullanici);
@@ -78,7 +81,6 @@ public class AuthServiceImpl implements AuthService {
         return refreshToken;
     }
 
-
     @Override
     public AuthResponse authenticate(AuthRequest authRequest) {
 
@@ -89,7 +91,7 @@ public class AuthServiceImpl implements AuthService {
         Optional<Kullanici> kullanici = authRepository.findByUsername(authRequest.getUsername());
 
         if(kullanici.isEmpty()){
-            return null;
+            throw new BaseException(new ErrorMessage(MessageType.KULLANICI_BULUNAMADI , authRequest.getUsername()));
         }
 
         String accessToken = jwtService.generateToken(kullanici.get());
@@ -109,11 +111,11 @@ public class AuthServiceImpl implements AuthService {
         Optional<RefreshToken> refreshToken = refreshTokenRepository.findByRefreshToken(refreshTokenRequest.getToken());
 
         if(refreshToken.isEmpty()){
-            return null;
+            throw new BaseException(new ErrorMessage(MessageType.TOKEN_BULUNAMADI , refreshTokenRequest.getToken()));
         }
 
         if(!isValidToken(refreshToken.get().getExpiredDate())){
-            return null;
+            throw new BaseException(new ErrorMessage(MessageType.TOKEN_SURESI_DOLMUS , refreshToken.get().getExpiredDate().toString()));
         }
 
         Kullanici kullanici = refreshToken.get().getKullanici();
