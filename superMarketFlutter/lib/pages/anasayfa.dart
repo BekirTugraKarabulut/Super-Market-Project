@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:supermarketproject/pages/superAburcubur.dart';
+import 'package:supermarketproject/pages/superManav.dart';
+import 'package:supermarketproject/pages/superMarket.dart';
 
 class Anasayfa extends StatefulWidget {
 
@@ -67,9 +70,9 @@ class _AnasayfaState extends State<Anasayfa> {
                         var bilgiler = snapshot.data;
                         return SizedBox(
                           height: 300,
-                          width: 500,
+                          width: 800,
                           child: Padding(
-                            padding: const EdgeInsets.all(20),
+                            padding: const EdgeInsets.only(top: 5),
                             child: PageView.builder(
                                 controller: _pageController,
                                 itemCount: bilgiler!.length,
@@ -77,7 +80,9 @@ class _AnasayfaState extends State<Anasayfa> {
                                   var bilgilerList = bilgiler[index];
                                   return Column(
                                     children: [
-                                      Image.asset("resimler/${bilgilerList["resimAdi"]}" , width: 200, height: 200,),
+                                      Container(
+                                      color: Colors.purple
+                                      ,child: Image.asset("resimler/${bilgilerList["resimAdi"]}" , width: 450, height: 250,)),
                                       Padding(
                                         padding: const EdgeInsets.only(top: 7),
                                         child: SmoothPageIndicator(
@@ -101,15 +106,99 @@ class _AnasayfaState extends State<Anasayfa> {
                       }
                       },
                 ),
-              Row(
+              Column(
                 children: [
-                  Column(
-                    children: [
-                      ElevatedButton(onPressed: (){}, child: Image.asset("resimler/et.jpeg",height: 50 , width: 50)),
-                      ElevatedButton(onPressed: (){}, child: Text("data")),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.only(right: 15 , left: 15),
+                    child: GestureDetector(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Supermarket())),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          border: Border.all(
+                            color: Colors.black
+                          ),
+                          color: Colors.white
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset("resimler/market.jpeg" , width: 200, height: 150,),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20),
+                                  child: SizedBox(
+                                  width: 165,
+                                  child: Text("Aradığın her şey burada. İndirimli ve uygun fiyatlar seni bekliyor !" , style: TextStyle(color: Colors.black ,fontWeight: FontWeight.bold), textAlign: TextAlign.start,))
+                                ),
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 290),
+                              child: Text("Süper-Market" , style: TextStyle(color: Colors.black , fontWeight: FontWeight.bold),),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
-                  ElevatedButton(onPressed: (){}, child: Text("data"))
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            GestureDetector(
+                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Supermanav())),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                    border: Border.all(
+                                        color: Colors.black
+                                    ),
+                                    color: Colors.white
+                                ),
+                                child: Column(
+                                  children: [
+                                    Image.asset("resimler/meyvelerim.jpeg" , width: 200, height: 150,),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 90),
+                                      child: Text("Super-Manav" , style: TextStyle(color: Colors.black , fontWeight: FontWeight.bold),),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            GestureDetector(
+                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Superaburcubur())),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                                    border: Border.all(
+                                        color: Colors.black
+                                    ),
+                                    color: Colors.white
+                                ),
+                                child: Column(
+                                  children: [
+                                    Image.asset("resimler/aburcubur.jpeg" , width: 200, height: 150,),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 80),
+                                      child: Text("Super-Aburcubur" , style: TextStyle(color: Colors.black , fontWeight: FontWeight.bold),),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ],
