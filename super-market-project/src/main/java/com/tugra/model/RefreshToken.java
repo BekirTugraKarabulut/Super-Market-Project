@@ -28,9 +28,8 @@ public class RefreshToken {
     @Column(name = "expired_date")
     private Date expiredDate;
 
-    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     @JoinColumn(name = "username" , referencedColumnName = "username")
+    @ManyToOne(fetch = FetchType.LAZY , cascade = CascadeType.ALL)
     private Kullanici kullanici;
-
 
 }

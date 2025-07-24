@@ -38,7 +38,7 @@ public class Kullanici implements UserDetails {
     @Column(name = "role")
     private Role role;
 
-    @OneToMany
+    @OneToMany(mappedBy = "kullanici" , fetch = FetchType.LAZY)
     private List<RefreshToken> refreshTokens;
 
     @Override
