@@ -31,7 +31,7 @@ class _KayitState extends State<Kayit> {
         (
           {
             "username" : usernameKontrol.text,
-            "kullaniciAd" : adresKontrol.text,
+            "kullaniciAd" : adKontrol.text,
             "password" : passwordKontrol.text,
             "telefonNo" : telefonNoKontrol.text,
             "adres" : adresKontrol.text
@@ -55,7 +55,7 @@ class _KayitState extends State<Kayit> {
 
     if(response.statusCode == 200){
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Giriş Başarılı !"))
+        SnackBar(content: Text("Kayıt İşlemi Başarılı !"))
       );
       Navigator.push(context, MaterialPageRoute(builder: (context) => Giris()));
     }
@@ -85,198 +85,201 @@ class _KayitState extends State<Kayit> {
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Lottie.asset("asset/Kayit.json" , height: 250 , width: 250),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.all(Radius.circular(12))
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              Lottie.asset("asset/Kayit.json" , height: 250 , width: 250),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.all(Radius.circular(12))
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),
+                      controller: usernameKontrol,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                          suffixIcon: Padding(
+                            padding: const EdgeInsets.only(right: 5 , bottom: 4),
+                            child: Icon(Icons.mail , color: Colors.white70,),
+                          ),
+                          hintText: "E-Mail",
+                          contentPadding: EdgeInsets.only(left: 10 , top: 12),
+                          hintStyle: TextStyle(color: Colors.white70 , fontWeight: FontWeight.bold),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)
+                          ),
+                          disabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)
+                          ),
+                      ),
+                    ),
+                  ),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),
-                    controller: usernameKontrol,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.all(Radius.circular(12))
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),
+                      controller: adKontrol,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
                         suffixIcon: Padding(
                           padding: const EdgeInsets.only(right: 5 , bottom: 4),
-                          child: Icon(Icons.mail , color: Colors.white70,),
+                          child: Icon(Icons.account_circle , color: Colors.white70,),
                         ),
-                        hintText: "E-Mail",
+                        hintText: "Adınız",
                         contentPadding: EdgeInsets.only(left: 10 , top: 12),
                         hintStyle: TextStyle(color: Colors.white70 , fontWeight: FontWeight.bold),
                         enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
+                            borderSide: BorderSide(color: Colors.white)
                         ),
                         disabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
+                            borderSide: BorderSide(color: Colors.white)
                         ),
                         focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
+                            borderSide: BorderSide(color: Colors.white)
                         ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.all(Radius.circular(12))
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),
-                    controller: adKontrol,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      suffixIcon: Padding(
-                        padding: const EdgeInsets.only(right: 5 , bottom: 4),
-                        child: Icon(Icons.account_circle , color: Colors.white70,),
-                      ),
-                      hintText: "Adınız",
-                      contentPadding: EdgeInsets.only(left: 10 , top: 12),
-                      hintStyle: TextStyle(color: Colors.white70 , fontWeight: FontWeight.bold),
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
-                      ),
-                      disabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.all(Radius.circular(12))
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),
-                    controller: telefonNoKontrol,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      suffixIcon: Padding(
-                        padding: const EdgeInsets.only(right: 5 , bottom: 4),
-                        child: Icon(Icons.phone , color: Colors.white70,),
-                      ),
-                      hintText: "Telefon No",
-                      contentPadding: EdgeInsets.only(left: 10 , top: 12),
-                      hintStyle: TextStyle(color: Colors.white70 , fontWeight: FontWeight.bold),
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
-                      ),
-                      disabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.all(Radius.circular(12))
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),
+                      controller: telefonNoKontrol,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        suffixIcon: Padding(
+                          padding: const EdgeInsets.only(right: 5 , bottom: 4),
+                          child: Icon(Icons.phone , color: Colors.white70,),
+                        ),
+                        hintText: "Telefon No",
+                        contentPadding: EdgeInsets.only(left: 10 , top: 12),
+                        hintStyle: TextStyle(color: Colors.white70 , fontWeight: FontWeight.bold),
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)
+                        ),
+                        disabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.all(Radius.circular(12))
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),
-                    controller: passwordKontrol,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      suffixIcon: Padding(
-                        padding: const EdgeInsets.only(right: 5 , bottom: 4),
-                        child: Icon(Icons.key , color: Colors.white70,),
-                      ),
-                      hintText: "Parola",
-                      contentPadding: EdgeInsets.only(left: 10 , top: 12),
-                      hintStyle: TextStyle(color: Colors.white70 , fontWeight: FontWeight.bold),
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
-                      ),
-                      disabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.all(Radius.circular(12))
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),
+                      controller: passwordKontrol,
+                      keyboardType: TextInputType.text,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        suffixIcon: Padding(
+                          padding: const EdgeInsets.only(right: 5 , bottom: 4),
+                          child: Icon(Icons.key , color: Colors.white70,),
+                        ),
+                        hintText: "Parola",
+                        contentPadding: EdgeInsets.only(left: 10 , top: 12),
+                        hintStyle: TextStyle(color: Colors.white70 , fontWeight: FontWeight.bold),
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)
+                        ),
+                        disabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.all(Radius.circular(12))
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),
-                    controller: adresKontrol,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                      suffixIcon: Padding(
-                        padding: const EdgeInsets.only(right: 5 , bottom: 4),
-                        child: Icon(Icons.maps_home_work_rounded , color: Colors.white70,),
-                      ),
-                      hintText: "Adres",
-                      contentPadding: EdgeInsets.only(left: 10 , top: 12),
-                      hintStyle: TextStyle(color: Colors.white70 , fontWeight: FontWeight.bold),
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
-                      ),
-                      disabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.all(Radius.circular(12))
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),
+                      controller: adresKontrol,
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        suffixIcon: Padding(
+                          padding: const EdgeInsets.only(right: 5 , bottom: 4),
+                          child: Icon(Icons.maps_home_work_rounded , color: Colors.white70,),
+                        ),
+                        hintText: "Adres",
+                        contentPadding: EdgeInsets.only(left: 10 , top: 12),
+                        hintStyle: TextStyle(color: Colors.white70 , fontWeight: FontWeight.bold),
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)
+                        ),
+                        disabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),onPressed: (){
-                        register();
-              }, child: Text("Kayıt Ol" , style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),)),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: GestureDetector(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Giris())),
-                  child: Text("Zaten bir hesabım var ?", style: TextStyle(color: Colors.black , fontWeight: FontWeight.bold),)),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: ElevatedButton(style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent),onPressed: (){
+                          register();
+                }, child: Text("Kayıt Ol" , style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),)),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: GestureDetector(
+                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Giris())),
+                    child: Text("Zaten bir hesabım var ?", style: TextStyle(color: Colors.black , fontWeight: FontWeight.bold),)),
+              ),
+            ],
+          ),
         ),
       ),
     );

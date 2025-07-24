@@ -58,7 +58,7 @@ class _GirisState extends State<Giris> {
       await refreshTokenPref.setString("refreshToken", refreshToken);
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Giriş Başarılı"))
+        SnackBar(content: Text("Giriş Başarılı !"))
       );
       Navigator.push(context, MaterialPageRoute(builder: (context) => Anasayfa(username: usernameKontrol.text)));
 
@@ -135,6 +135,7 @@ class _GirisState extends State<Giris> {
                     style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),
                     controller: passwordKontrol,
                     keyboardType: TextInputType.text,
+                    obscureText: true,
                     decoration: InputDecoration(
                       suffixIcon: Padding(
                         padding: const EdgeInsets.only(right: 5 , bottom: 4),
