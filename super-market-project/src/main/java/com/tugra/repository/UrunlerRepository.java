@@ -6,10 +6,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-
 @Repository
 public interface UrunlerRepository extends JpaRepository<Urunler,Long> {
 
     Optional<Urunler> findByKategoriler_KategoriId(Long kategorilerKategoriId);
+
+    Optional<Urunler> findByUrunId(Long urunId);
 
 }

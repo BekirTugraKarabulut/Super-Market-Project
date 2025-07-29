@@ -9,7 +9,8 @@ public enum MessageType {
     KULLANILMIS_TELEFON_NO("112" , "Kullanılmış Telefon Numarası. Lütfen başka bir telefon numarası deneyiniz !"),
     KULLANICI_BULUNAMADI("113" , "Kullanıcı Bulunamadı !"),
     TOKEN_BULUNAMADI("114" , "Token Bulunamadi !"),
-    TOKEN_SURESİ_BİTMİS("115" , "Token Süresi Bitmiştir !");
+    TOKEN_SURESİ_BİTMİS("115" , "Token Süresi Bitmiştir !"),
+    URUN_BULUNAMADI("116" , "Ürün Bulunamadı !");
 
     private String code;
     private String message;

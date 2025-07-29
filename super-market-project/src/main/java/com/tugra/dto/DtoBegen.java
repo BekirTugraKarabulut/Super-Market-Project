@@ -7,14 +7,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DtoUrunlerUI {
+public class DtoBegen {
 
-    private Long urunId;
+    private Long begenId;
 
-    private String urunAdi;
+    private DtoUrunler urunler;
 
-    private String urunResmi;
+    private DtoKullanici kullanici;
 
-    private double urunFiyati;
 
 }

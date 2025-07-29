@@ -9,7 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DtoUrunler {
 
+    private Long urunId;
+
     private String urunAdi;
+
+    private String urunResmi;
 
     private double urunFiyati;
 
