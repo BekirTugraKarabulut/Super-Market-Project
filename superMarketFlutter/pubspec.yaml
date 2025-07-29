@@ -59,7 +59,9 @@ dev_dependencies:
 flutter:
   assets:
     - asset/
+    - asset/UserAccount.json
     - resimler/
+
   fonts:
     - family: BebasNeue
       fonts:

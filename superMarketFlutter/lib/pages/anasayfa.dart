@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:supermarketproject/pages/account.dart';
 import 'package:supermarketproject/pages/superAburcubur.dart';
 import 'package:supermarketproject/pages/superManav.dart';
 import 'package:supermarketproject/pages/superMarket.dart';
 
 class Anasayfa extends StatefulWidget {
 
-  final username;
+  var username;
 
   Anasayfa({required this.username});
 
@@ -50,6 +51,14 @@ class _AnasayfaState extends State<Anasayfa> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: IconButton(onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Account(username: widget.username)));
+            }, icon: Icon(Icons.account_circle , size: 35, color: Colors.white,)),
+          )
+        ],
         leading: Icon(Icons.free_breakfast , color: Colors.white, size: 25,),
         backgroundColor: Colors.blueAccent,
         centerTitle: true,
@@ -111,7 +120,7 @@ class _AnasayfaState extends State<Anasayfa> {
                   Padding(
                     padding: const EdgeInsets.only(right: 15 , left: 15),
                     child: GestureDetector(
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Supermarket())),
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Supermarket(username: widget.username))),
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -149,7 +158,7 @@ class _AnasayfaState extends State<Anasayfa> {
                         Column(
                           children: [
                             GestureDetector(
-                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Supermanav())),
+                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Supermanav(username: widget.username))),
                               child: Container(
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -174,7 +183,7 @@ class _AnasayfaState extends State<Anasayfa> {
                         Column(
                           children: [
                             GestureDetector(
-                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Superaburcubur())),
+                              onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Superaburcubur(username: widget.username))),
                               child: Container(
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(Radius.circular(10)),
