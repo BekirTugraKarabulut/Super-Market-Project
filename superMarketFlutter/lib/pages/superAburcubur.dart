@@ -107,6 +107,43 @@ class _SuperaburcuburState extends State<Superaburcubur> {
 
   }
 
+  Future<bool> sepeteEkleme(String username , int urunId) async {
+
+    final accessTokenPrefs = await SharedPreferences.getInstance();
+    final accessToken = accessTokenPrefs.getString("accessToken");
+
+    final url = Uri.parse("http://10.0.2.2:8088/sepet/ekle");
+
+    final response = await http.post(
+
+        url,
+        headers:
+        {
+          "Content-Type" : "application/json",
+          "Authorization" : "Bearer $accessToken"
+        },
+        body: jsonEncode
+          (
+            {
+              "kullanici" :
+              {
+                "username" : username
+              },
+              "urunler" :
+              {
+                "urunId" : urunId
+              }
+            }
+        )
+    );
+
+    if(response.statusCode == 200){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -257,7 +294,12 @@ class _SuperaburcuburState extends State<Superaburcubur> {
                                           ),
                                         ),
                                         IconButton(onPressed: (){
-
+                                          sepeteEkleme(widget.username, aburCubur["urunId"]);
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                              SnackBar(content: Text("Sepetinze Eklendi."),
+                                                action: SnackBarAction(label: "Tamam", onPressed: (){}),
+                                              )
+                                          );
                                         }, icon: Icon(Icons.add_shopping_cart,size: 33,color: Colors.black,))
                                       ],
                                     ),

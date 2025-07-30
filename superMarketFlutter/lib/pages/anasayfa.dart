@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:supermarketproject/pages/account.dart';
+import 'package:supermarketproject/pages/sepet.dart';
 import 'package:supermarketproject/pages/superAburcubur.dart';
 import 'package:supermarketproject/pages/superManav.dart';
 import 'package:supermarketproject/pages/superMarket.dart';
@@ -52,6 +53,12 @@ class _AnasayfaState extends State<Anasayfa> {
     return Scaffold(
       appBar: AppBar(
         actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: IconButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Sepet(username: widget.username)));
+            }, icon: Icon(Icons.shopping_basket_rounded , size: 35, color: Colors.white,)),
+          ),
           Padding(
             padding: const EdgeInsets.only(right: 15),
             child: IconButton(onPressed: (){

@@ -112,9 +112,7 @@ class _BegenilenlerState extends State<Begenilenler> {
                                       Padding(
                                         padding: const EdgeInsets.only(left: 30),
                                         child: IconButton(onPressed: () async {
-
                                          int urunId = urun["urunId"];
-
                                          bool response = await begenDelete(urunId, widget.username);
                                          if(response){
                                            setState(() {
