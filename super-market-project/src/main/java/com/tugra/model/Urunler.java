@@ -35,11 +35,14 @@ public class Urunler {
     @JoinColumn(name = "kategori_id" ,referencedColumnName = "kategori_id")
     private Kategoriler kategoriler;
 
+    @OneToMany(mappedBy = "urunler", fetch = FetchType.LAZY)
+    private List<SatinAlinanlar> satinAlinanlar;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ana_kategori_id" , referencedColumnName = "ana_kategori_id")
     private AnaKategori anaKategori;
 
-
-
+    @OneToMany(mappedBy = "urunler",cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    private List<Sepet> sepet;
 
 }

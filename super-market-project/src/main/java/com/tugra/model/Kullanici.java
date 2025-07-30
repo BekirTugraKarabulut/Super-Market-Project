@@ -42,7 +42,13 @@ public class Kullanici implements UserDetails {
     private List<RefreshToken> refreshTokens;
 
     @OneToMany(mappedBy = "kullanici" , fetch = FetchType.LAZY)
-    private List<Begen> begens;
+    private List<Begen> begen;
+
+    @OneToMany(mappedBy = "kullanici" , fetch = FetchType.LAZY)
+    private List<SatinAlinanlar> satinAlinanlar;
+
+    @OneToMany(mappedBy = "kullanici" , fetch = FetchType.LAZY)
+    private List<Sepet> sepet;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
