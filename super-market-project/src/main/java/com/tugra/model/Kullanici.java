@@ -50,6 +50,9 @@ public class Kullanici implements UserDetails {
     @OneToMany(mappedBy = "kullanici" , fetch = FetchType.LAZY)
     private List<Sepet> sepet;
 
+    @OneToMany(mappedBy = "kullanici" , fetch = FetchType.LAZY)
+    private List<KrediKart> krediKart;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));

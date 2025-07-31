@@ -83,4 +83,32 @@ public class SatinAlinanlarServiceImpl implements SatinAlinanlarService {
         return dtoSatinAlinanlars;
     }
 
+    @Override
+    public List<DtoSatinAlinanlar> satinAlinanlarByUsername(String username) {
+
+        List<SatinAlinanlar> satinAlinanlarList = satinAlinanlarRepository.findByKullanici_Username(username);
+        List<DtoSatinAlinanlar> dtoSatinAlinanlars = new ArrayList<>();
+
+        if (satinAlinanlarList.isEmpty()) {
+            return null;
+        }
+
+        for (SatinAlinanlar satin : satinAlinanlarList) {
+            DtoSatinAlinanlar dtoSatinAlinanlar = new DtoSatinAlinanlar();
+            BeanUtils.copyProperties(satin, dtoSatinAlinanlar);
+
+            DtoKullanici dtoKullanici = new DtoKullanici();
+            BeanUtils.copyProperties(satin.getKullanici(), dtoKullanici);
+            dtoSatinAlinanlar.setKullanici(dtoKullanici);
+
+            DtoUrunler dtoUrunler = new DtoUrunler();
+            BeanUtils.copyProperties(satin.getUrunler(), dtoUrunler);
+            dtoSatinAlinanlar.setUrunler(dtoUrunler);
+
+            dtoSatinAlinanlars.add(dtoSatinAlinanlar);
+        }
+
+        return dtoSatinAlinanlars;
+    }
+
 }

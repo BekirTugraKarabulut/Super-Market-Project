@@ -4,10 +4,7 @@ import com.tugra.controller.SatinAlinanlarController;
 import com.tugra.dto.DtoSatinAlinanlar;
 import com.tugra.service.SatinAlinanlarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +20,12 @@ public class SatinAlinanlarControllerImpl implements SatinAlinanlarController {
     @PostMapping(path = "/{username}")
     public List<DtoSatinAlinanlar> satinAlByUsername(@PathVariable(name = "username" ,required = true) String username) {
         return satinAlinanlarService.satinAlByUsername(username);
+    }
+
+    @Override
+    @GetMapping(path = "/getir/{username}")
+    public List<DtoSatinAlinanlar> satinAlinanlarByUsername(@PathVariable(name = "username") String username) {
+        return satinAlinanlarService.satinAlinanlarByUsername(username);
     }
 
 }
