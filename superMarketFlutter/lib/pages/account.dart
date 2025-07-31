@@ -7,6 +7,7 @@ import 'package:supermarketproject/pages/anasayfa.dart';
 import 'package:supermarketproject/pages/begenilenler.dart';
 import 'package:supermarketproject/pages/bilgilerim.dart';
 import 'package:http/http.dart' as http;
+import 'package:supermarketproject/pages/satin_aldiklarim.dart';
 
 class Account extends StatefulWidget {
 
@@ -134,6 +135,31 @@ class _AccountState extends State<Account> {
                           child: Text("Bilgilerim" , style: TextStyle(fontSize: 25),),
                         ),
                         Icon(Icons.account_circle ,color: Colors.black, size: 30,)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: GestureDetector(
+                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => SatinAldiklarim(username: widget.username))),
+                  child: Container(
+                    width: 250,
+                    height: 70,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.black
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(10))
+                    ),
+                    child: Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 20),
+                          child: Text("Satın Alınanlar" , style: TextStyle(fontSize: 25),),
+                        ),
+                        Icon(Icons.shopping_cart ,color: Colors.black, size: 30,)
                       ],
                     ),
                   ),

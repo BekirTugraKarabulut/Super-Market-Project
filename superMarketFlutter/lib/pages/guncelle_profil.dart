@@ -224,7 +224,7 @@ class _GuncelleProfilState extends State<GuncelleProfil> {
                                         adresKontrol.text = kullaniciBilgileri?["adres"];
                                       }
                                        bilgileriGuncelle(adKontrol.text, telefonNoKontrol.text, adresKontrol.text);
-                              }, child: Text("Güncelle",style: TextStyle(color: Colors.white),)),
+                              }, child: Text("Tamamla",style: TextStyle(color: Colors.white),)),
                             )
                           ],
                         ),

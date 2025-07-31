@@ -110,7 +110,7 @@ class _BegenilenlerState extends State<Begenilenler> {
                                           ],
                                         ),
                                       Padding(
-                                        padding: const EdgeInsets.only(left: 30),
+                                        padding: const EdgeInsets.only(left: 10),
                                         child: IconButton(onPressed: () async {
                                          int urunId = urun["urunId"];
                                          bool response = await begenDelete(urunId, widget.username);
@@ -134,7 +134,15 @@ class _BegenilenlerState extends State<Begenilenler> {
                             },
                         );
                     }else{
-                      return const CircularProgressIndicator();
+                      return Padding(
+                        padding: const EdgeInsets.only(top: 150),
+                        child: Column(
+                          children: [
+                            Icon(Icons.search,size: 35,color: Colors.black,),
+                            Text("Henüz ürün beğenmediniz.",style: TextStyle(color: Colors.black , fontWeight: FontWeight.bold),)
+                          ],
+                        ),
+                      );
                     }
                   },
               )

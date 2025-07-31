@@ -197,7 +197,7 @@ class _SepetState extends State<Sepet> {
                           ),
                         );
                       }else{
-                        return const CircularProgressIndicator();
+                        return Text("Merhaba");
                       }
                     },
                 ),

@@ -164,12 +164,21 @@ class _GirisState extends State<Giris> {
                     authenticate();
               }, child: Text("Giriş Yap" , style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),)),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: GestureDetector(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Kayit())),
-                  child: Text("Hesabın yok mu ?", style: TextStyle(color: Colors.black , fontWeight: FontWeight.bold),)),
+            Row(mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: GestureDetector(
+                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Kayit())),
+                      child: Text("Hesabın yok mu ?   ", style: TextStyle(color: Colors.black , fontWeight: FontWeight.bold),)),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: Text("Şifremi Unuttum" , style: TextStyle(color: Colors.blueAccent , fontWeight: FontWeight.bold),),
+                )
+              ],
             ),
+
           ],
         ),
       ),
